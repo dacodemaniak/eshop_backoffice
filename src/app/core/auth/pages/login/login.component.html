@@ -1,3 +1,54 @@
-<p>
-  login works!
-</p>
+<mat-card class="login-card">
+
+  <mat-card-header>
+    <mat-card-title> eShop - Identification </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <table>
+        <tr>
+          <td>
+            <mat-form-field class="full-width">
+              <input
+                formControlName="username"
+                matInput
+                placeholder="Votre identifiant"
+              />
+            </mat-form-field>
+            <mat-error>
+              <span
+                *ngIf="control.username.invalid && control.username.touched"
+              >
+                Votre identifiant est obligatoire...
+              </span>
+            </mat-error>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="full-width">
+              <input
+                formControlName="password"
+                matInput
+                placeholder="Votre mot de passe"
+              />
+            </mat-form-field>
+            <mat-error>
+              <span
+                *ngIf="control.password.invalid && control.password.touched"
+              >
+                Votre mot de passe est obligatoire...
+              </span>
+            </mat-error>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button [disabled]="loginForm.invalid" color="primary">Connexion</button>
+  </mat-card-actions>
+
+</mat-card>
