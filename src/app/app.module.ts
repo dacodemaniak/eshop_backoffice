@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { UiModule } from '@app/ui/ui.module';
 import { AuthModule } from '@app/core/auth/auth.module';
 import { MaterialModule } from '@app/core/material/material.module';
@@ -16,6 +18,7 @@ import { MaterialModule } from '@app/core/material/material.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     UiModule,
     AuthModule,
     BrowserAnimationsModule,
