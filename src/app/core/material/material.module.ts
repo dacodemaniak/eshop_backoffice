@@ -12,6 +12,7 @@ import {
   MatButtonModule
 } from '@angular/material';
 
+
 @NgModule({
   declarations: [],
   imports: [
@@ -29,7 +30,8 @@ import {
     MatMenuModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule
   ]
 })
 export class MaterialModule { }

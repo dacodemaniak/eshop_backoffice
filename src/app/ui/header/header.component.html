@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <button mat-button (click)="sidenav.open()">
+  <button mat-button (click)="sidenav.open()"  *ngIf="haveUser">
     <mat-icon>menu</mat-icon>
   </button>
 
