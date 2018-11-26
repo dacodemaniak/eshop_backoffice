@@ -40,6 +40,19 @@ export class AuthenticationService {
     );
   }
 
+  public hasToken(): boolean {
+    const token: any = localStorage.getItem('eshopUser');
+
+    return token;
+  }
+
+  /**
+   * Retourne le token Utilisateur enregistré
+   */
+  public getToken(): string {
+    return localStorage.getItem('eshopUser');
+  }
+
   public logout() {
     localStorage.removeItem('eshopUser');
     this.userSubject.next(null);

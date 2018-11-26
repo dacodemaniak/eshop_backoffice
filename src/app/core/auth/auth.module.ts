@@ -1,5 +1,4 @@
-import { CarouselComponent } from '@app/shared/components/carousel/carousel.component';
-
+import { InterceptorService } from './services/interceptor.service';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,7 +9,8 @@ import { SharedComponentsModule } from '@app/shared/shared-components/shared-com
 import { LoginComponent } from '@app/core/auth/pages/login/login.component';
 
 import { MaterialModule } from '@app/core/material/material.module';
-
+import { UiModule } from '@app/ui/ui.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -26,6 +26,14 @@ import { MaterialModule } from '@app/core/material/material.module';
     ReactiveFormsModule,
     MaterialModule,
     LoginComponent
+  ],
+  providers: [
+    InterceptorService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }
   ]
 })
 export class AuthModule { }
