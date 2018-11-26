@@ -46,7 +46,8 @@ export class LoginComponent implements OnInit {
 
   public get control() { return this.loginForm.controls; }
 
-  public onSubmit() {
+  public login() {
+    console.log('Authentification Utilisateur');
     this.isSubmitted = true;
 
     if (this.loginForm.invalid) {

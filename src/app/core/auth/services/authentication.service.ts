@@ -32,7 +32,7 @@ export class AuthenticationService {
     ).pipe(
       map((user) => {
        if (user && user.token) {
-         localStorage.setItem('eshopUser', JSON.stringify(user));
+         localStorage.setItem('eshopUser', JSON.stringify(user.token));
          this.userSubject.next(user);
        }
        return user;
