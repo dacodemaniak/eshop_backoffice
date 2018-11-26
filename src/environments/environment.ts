@@ -3,6 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  apiUrl: 'http://api.eshop.wrk/',
+  version: '1.0.0',
   production: false
 };
 
