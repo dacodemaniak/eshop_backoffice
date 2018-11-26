@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UiModule } from '@app/ui/ui.module';
 import { AuthModule } from '@app/core/auth/auth.module';
 import { MaterialModule } from '@app/core/material/material.module';
+import { SharedComponentsModule } from './shared/shared-components/shared-components.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MaterialModule } from '@app/core/material/material.module';
     UiModule,
     AuthModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    SharedComponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
