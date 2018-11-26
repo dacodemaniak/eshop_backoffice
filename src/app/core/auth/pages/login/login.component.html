@@ -32,6 +32,7 @@
                 <input
                   formControlName="password"
                   matInput
+                  type="password"
                   placeholder="Votre mot de passe"
                 />
               </mat-form-field>
@@ -45,12 +46,13 @@
             </td>
           </tr>
         </table>
+        <mat-card-actions>
+          <button mat-raised-button type="submit" [disabled]="loginForm.invalid" color="primary">Connexion</button>
+        </mat-card-actions>
       </form>
     </mat-card-content>
 
-    <mat-card-actions>
-      <button mat-raised-button [disabled]="loginForm.invalid" color="primary">Connexion</button>
-    </mat-card-actions>
+
 
   </mat-card>
 
