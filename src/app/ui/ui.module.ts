@@ -6,20 +6,26 @@ import { LayoutComponent } from '@app/ui/layout/layout.component';
 import { HeaderComponent } from '@app/ui/header/header.component';
 import { FooterComponent } from '@app/ui/footer/footer.component';
 import { AppRoutingModule } from '@app/app-routing.module';
-import { CarouselComponent } from './carousel/carousel.component';
+import { AuthModule } from '@app/core/auth/auth.module';
+import { SharedComponentsModule } from '@app/shared/shared-components/shared-components.module';
 
 @NgModule({
-  declarations: [LayoutComponent, HeaderComponent, FooterComponent, CarouselComponent],
+  declarations: [
+    LayoutComponent,
+    HeaderComponent,
+    FooterComponent
+  ],
   imports: [
     CommonModule,
     AppRoutingModule,
     FlexLayoutModule,
-    MaterialModule
+    MaterialModule,
+    AuthModule,
+    SharedComponentsModule
   ],
   exports: [
     FlexLayoutModule,
-    LayoutComponent,
-    CarouselComponent
+    LayoutComponent
   ]
 })
 export class UiModule { }
