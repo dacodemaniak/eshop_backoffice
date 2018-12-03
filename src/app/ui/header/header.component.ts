@@ -1,6 +1,8 @@
+import { first } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '@app/core/auth/services/authentication.service';
-import { UserMenuComponent } from '@app/core/auth/pages/user-menu/user-menu.component';
+import { UserMenuComponent } from '@app/shared/components/user-menu/user-menu.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +10,22 @@ import { UserMenuComponent } from '@app/core/auth/pages/user-menu/user-menu.comp
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+    /**
+   * Souscription à l'utilisateur identifié
+   */
+  public userSubscription: Subscription;
+
   public haveUser: boolean = false;
 
-  constructor(authenticationService: AuthenticationService) {
-    this.haveUser = authenticationService.userValue ? true : false;
+  constructor(private authenticationService: AuthenticationService) {
+    this.userSubscription = this.authenticationService.getUser().subscribe((user) => {
+
+      if (user && user.token) {
+        this.haveUser = true;
+      } else {
+        this.haveUser = false;
+      }
+    });
   }
 
   ngOnInit() {
