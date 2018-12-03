@@ -1,3 +1,18 @@
-<p>
-  user-menu works!
-</p>
+<button mat-button [matMenuTriggerFor]="userMenu">
+  <mat-icon>account_circle</mat-icon>
+</button>
+
+<mat-menu #userMenu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>dialpad</mat-icon>
+    <span>{{ user.firstName }} {{  user.lastName }}</span>
+  </button>
+  <button mat-menu-item disabled>
+    <mat-icon>voicemail</mat-icon>
+    <span>Check voicemail</span>
+  </button>
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>notifications_off</mat-icon>
+    <span>Déconnexion</span>
+  </button>
+</mat-menu>

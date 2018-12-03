@@ -25,6 +25,13 @@ export class AuthenticationService {
     return this.userSubject.value;
   }
 
+  /**
+   * Retourne un Observable sur l'utilisateur courant
+   */
+  public getUser(): Observable<User> {
+    return this.user;
+  }
+
   public login(userData: any) {
     return this.http.post<any>(
       environment.apiUrl + 'signin',
@@ -53,6 +60,9 @@ export class AuthenticationService {
     return localStorage.getItem('eshopUser');
   }
 
+  /**
+   * Déconnecte l'utilisateur et redirige vers la page de login
+   */
   public logout() {
     localStorage.removeItem('eshopUser');
     this.userSubject.next(null);
