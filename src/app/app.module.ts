@@ -1,6 +1,7 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,15 @@ import { UiModule } from '@app/ui/ui.module';
 import { AuthModule } from '@app/core/auth/auth.module';
 import { MaterialModule } from '@app/core/material/material.module';
 import { SharedComponentsModule } from './shared/shared-components/shared-components.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { AuthenticationService } from '@app/core/auth/services/authentication.service';
+
+
+export function appInit(userLoader: AuthenticationService) {
+  return () => userLoader.initialize().then((user) => {
+    console.log(user);
+  });
+}
 
 @NgModule({
   declarations: [
@@ -27,9 +37,13 @@ import { SharedComponentsModule } from './shared/shared-components/shared-compon
     AuthModule,
     BrowserAnimationsModule,
     MaterialModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    DashboardModule
   ],
-  providers: [],
+  providers: [
+    AuthenticationService,
+    { provide: APP_INITIALIZER, useFactory: appInit, deps: [AuthenticationService], multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
