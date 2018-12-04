@@ -20,7 +20,7 @@ export class AuthenticationService {
     if ((token = localStorage.getItem('eshopUser'))) {
       // Authentifie l'utilisateur à partir de l'API
       this.tokenAuthenticate(token).then((user) => {
-        console.log('Utilisateur : ' + user);
+
         this.userSubject.next(user);
         this.user = this.userSubject.asObservable();
 

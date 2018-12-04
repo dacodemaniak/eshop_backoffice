@@ -13,7 +13,6 @@ import { UiModule } from '@app/ui/ui.module';
 import { AuthModule } from '@app/core/auth/auth.module';
 import { MaterialModule } from '@app/core/material/material.module';
 import { SharedComponentsModule } from './shared/shared-components/shared-components.module';
-import { DashboardModule } from './dashboard/dashboard.module';
 import { AuthenticationService } from '@app/core/auth/services/authentication.service';
 
 
@@ -37,8 +36,7 @@ export function appInit(userLoader: AuthenticationService) {
     AuthModule,
     BrowserAnimationsModule,
     MaterialModule,
-    SharedComponentsModule,
-    DashboardModule
+    SharedComponentsModule
   ],
   providers: [
     AuthenticationService,
