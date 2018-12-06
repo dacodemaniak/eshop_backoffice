@@ -67,16 +67,6 @@ export class User implements DeserializableInterface {
 
   public deserialize(data: any) {
     Object.assign(this, data);
-
-    if (data.hasOwnProperty('menus')) {
-      const menus: any = data.menus;
-
-      for (const menu of menus) {
-        const menuObject = new Menu();
-        menuObject.deserialize(menu);
-        this.menus.push(menuObject);
-      }
-    }
   }
 
 }

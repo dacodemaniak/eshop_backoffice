@@ -32,6 +32,8 @@ export class Option implements DeserializableInterface {
 
   public deserialize(data: any) {
     Object.assign(this, data);
+       /**
+    console.log(data.nodes);
 
     if (data.hasOwnProperty('nodes')) {
       const options: any = data.nodes;
@@ -43,6 +45,8 @@ export class Option implements DeserializableInterface {
           this.nodes.push(optionObject);
         }
       }
+
     }
+    */
   }
 }

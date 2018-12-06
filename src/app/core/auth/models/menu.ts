@@ -30,13 +30,15 @@ export class Menu implements DeserializableInterface {
     Object.assign(this, data);
 
     if (data.hasOwnProperty('options')) {
-      const options: any = data.options;
-
+      const options: Array<Option> = data.options;
+      console.log('Options : ' + JSON.stringify(options));
+      /**
       for (const option of options) {
         const optionObject = new Option();
         optionObject.deserialize(option);
         this.options.push(optionObject);
       }
+      **/
     }
   }
 }

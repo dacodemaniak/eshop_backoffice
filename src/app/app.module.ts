@@ -17,9 +17,7 @@ import { AuthenticationService } from '@app/core/auth/services/authentication.se
 
 
 export function appInit(userLoader: AuthenticationService) {
-  return () => userLoader.initialize().then((user) => {
-    console.log(user);
-  });
+  return () => userLoader.initialize().then((user) => {});
 }
 
 @NgModule({
