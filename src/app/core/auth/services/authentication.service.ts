@@ -38,12 +38,18 @@ export class AuthenticationService {
         this.http.get<any>(
           environment.apiUrl + 'token/' + token,
         ).subscribe((user) => {
-          this.userSubject.next(user);
+          // Créer l'instance complète de l'utilisateur
+          const userObject = new User();
+          userObject.deserialize(user);
+          this.userSubject.next(userObject);
           this.user = this.userSubject.asObservable();
-          resolve(user);
+          resolve(userObject);
         });
       } else {
-        resolve();
+        const userObject = new User();
+        this.userSubject.next(userObject);
+        this.user = this.userSubject.asObservable();
+        resolve(userObject);
       }
     });
   }
@@ -69,11 +75,13 @@ export class AuthenticationService {
       userData
     ).pipe(
       map((user) => {
+        const userObject = new User();
        if (user && user.token) {
          localStorage.setItem('eshopUser', JSON.stringify(user.token));
-         this.userSubject.next(user);
+         userObject.deserialize(user);
+         this.userSubject.next(userObject);
        }
-       return user;
+       return userObject;
       })
     );
   }
