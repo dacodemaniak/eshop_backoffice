@@ -1,8 +1,10 @@
+
 import { User } from '@app/core/auth/models/user';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from '@app/core/auth/services/authentication.service';
 import { Option } from '@app/core/auth/models/option';
+import { ShopListComponent } from '@app/dashboard/components/shop-list/shop-list.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -46,6 +48,8 @@ export class MenuComponent implements OnInit {
    * Lance la navigation vers la route définie
    */
   public onClick(option: Option) {
-    this.router.navigate([option.routing]);
+    const optionObject = new Option();
+    optionObject.deserialize(option);
+    this.router.navigate([optionObject.getRoute()]);
   }
 }

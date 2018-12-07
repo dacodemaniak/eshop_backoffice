@@ -26,7 +26,6 @@ export function appInit(userLoader: AuthenticationService) {
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -34,7 +33,8 @@ export function appInit(userLoader: AuthenticationService) {
     AuthModule,
     BrowserAnimationsModule,
     MaterialModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    AppRoutingModule,
   ],
   providers: [
     AuthenticationService,

@@ -1,28 +1,26 @@
-
-import { MaterialModule } from '@app/core/material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@app/core/material/material.module';
+
 import { DashboardRoutingModule } from '@app/dashboard/dashboard-routing.module';
-import { DynamicComponentLoaderModule } from '@app/dynamic-component-loader/dynamic-component-loader.module';
 import { DashboardComponent } from '@app/dashboard/components/dashboard/dashboard.component';
 import { MenuComponent } from './components/menu/menu.component';
-
+import { ShopListComponent } from './components/shop-list/shop-list.component';
+import { AuthModule } from '@app/core/auth/auth.module';
 @NgModule({
   declarations: [
     DashboardComponent,
-    MenuComponent
+    MenuComponent,
+    ShopListComponent
   ],
   imports: [
     CommonModule,
+    AuthModule,
     MaterialModule,
-    DashboardRoutingModule,
-    DynamicComponentLoaderModule.forChild(MenuComponent)
+    DashboardRoutingModule
   ],
   exports: [
     MaterialModule
-  ],
-  entryComponents: [
-    MenuComponent
   ]
 })
 export class DashboardModule { }
