@@ -1,0 +1,5 @@
+<mat-grid-list cols="2" rowHeight="5:1">
+  <mat-grid-tile *ngFor="let option of options">
+    <button mat-raised-button color="primary" (click)="onClick(option)">{{ option.content.title }}</button>
+  </mat-grid-tile>
+</mat-grid-list>

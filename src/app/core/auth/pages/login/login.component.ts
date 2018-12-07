@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService
   ) {
     if (this.authenticationService.userValue) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/dashboard']);
     }
    }
 
@@ -41,13 +41,12 @@ export class LoginComponent implements OnInit {
       ]
     });
 
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'dashboard';
   }
 
   public get control() { return this.loginForm.controls; }
 
   public login() {
-    console.log('Authentification Utilisateur');
     this.isSubmitted = true;
 
     if (this.loginForm.invalid) {
@@ -59,6 +58,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.loginForm.value)
       .pipe(first())
       .subscribe((data) => {
+        console.log('Redirige vers : ' + this.returnUrl);
         this.router.navigate([this.returnUrl]);
       },
       (error) => {

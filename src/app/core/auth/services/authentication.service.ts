@@ -13,8 +13,45 @@ export class AuthenticationService {
   public user: Observable<User>;
 
   constructor(private http: HttpClient) {
-    this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('eshopUser')));
-    this.user = this.userSubject.asObservable();
+    let token: string;
+
+    this.userSubject = new BehaviorSubject<User>(new User());
+
+    if ((token = localStorage.getItem('eshopUser'))) {
+      // Authentifie l'utilisateur à partir de l'API
+      this.tokenAuthenticate(token).then((user) => {
+
+        this.userSubject.next(user);
+        this.user = this.userSubject.asObservable();
+
+      });
+    }
+
+  }
+  /**
+   * Charge à partir du token du localStorage
+   */
+  public initialize(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      let token: string;
+      if (token = JSON.parse(localStorage.getItem('eshopUser'))) {
+        this.http.get<any>(
+          environment.apiUrl + 'token/' + token,
+        ).subscribe((user) => {
+          // Créer l'instance complète de l'utilisateur
+          const userObject = new User();
+          userObject.deserialize(user);
+          this.userSubject.next(userObject);
+          this.user = this.userSubject.asObservable();
+          resolve(userObject);
+        });
+      } else {
+        const userObject = new User();
+        this.userSubject.next(userObject);
+        this.user = this.userSubject.asObservable();
+        resolve(userObject);
+      }
+    });
   }
 
   /**
@@ -38,11 +75,13 @@ export class AuthenticationService {
       userData
     ).pipe(
       map((user) => {
+        const userObject = new User();
        if (user && user.token) {
          localStorage.setItem('eshopUser', JSON.stringify(user.token));
-         this.userSubject.next(user);
+         userObject.deserialize(user);
+         this.userSubject.next(userObject);
        }
-       return user;
+       return userObject;
       })
     );
   }
@@ -66,5 +105,22 @@ export class AuthenticationService {
   public logout() {
     localStorage.removeItem('eshopUser');
     this.userSubject.next(null);
+  }
+
+  private tokenAuthenticate(token: string): Promise<User> {
+    return new Promise((resolve) => {
+      this.http.get<any>(
+        environment.apiUrl + 'token/' + token,
+      ).pipe(
+        map((user) => {
+          console.log(user);
+          resolve(user);
+         if (user && user.token) {
+           this.userSubject.next(user);
+         }
+        })
+      );
+    });
+
   }
 }
