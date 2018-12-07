@@ -20,6 +20,11 @@ export class Option implements DeserializableInterface {
   public ordre: number;
 
   /**
+   * Route à charger
+   */
+  public route: string;
+
+  /**
    * Contenu de l'option de menu => titre, etc...
    */
   public content: any;
@@ -29,6 +34,10 @@ export class Option implements DeserializableInterface {
    * @var Array<Option>
    */
   public nodes: Array<Option>;
+
+  public get routing(): string {
+    return this.route.substr(1, this.route.length);
+  }
 
   public deserialize(data: any) {
     Object.assign(this, data);

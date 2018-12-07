@@ -1,5 +1,5 @@
 
-
+import { MaterialModule } from '@app/core/material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from '@app/dashboard/dashboard-routing.module';
@@ -14,8 +14,12 @@ import { MenuComponent } from './components/menu/menu.component';
   ],
   imports: [
     CommonModule,
+    MaterialModule,
     DashboardRoutingModule,
     DynamicComponentLoaderModule.forChild(MenuComponent)
+  ],
+  exports: [
+    MaterialModule
   ],
   entryComponents: [
     MenuComponent
