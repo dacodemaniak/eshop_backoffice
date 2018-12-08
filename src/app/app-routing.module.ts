@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from '@app/app.component';
 import { LoginComponent } from '@app/core/auth/pages/login/login.component';
 import { AuthGuardService } from '@app/core/auth/services/auth-guard.service';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -14,15 +14,18 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
-
   {
     path: 'dashboard',
-    loadChildren: '@app/dashboard/dashboard.module#DashboardModule',
+    loadChildren: './dashboard/dashboard.module#DashboardModule',
     canActivate: [AuthGuardService]
   },
   {
+    path: 'not-found',
+    component: NotFoundComponent
+  },
+  {
     path: '**',
-    redirectTo: ''
+    redirectTo: 'not-found'
   }
 ];
 

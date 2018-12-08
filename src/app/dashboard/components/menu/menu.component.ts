@@ -1,3 +1,4 @@
+
 import { User } from '@app/core/auth/models/user';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -32,7 +33,8 @@ export class MenuComponent implements OnInit {
     private router: Router
   ) {
     this.userSubscription = this.authenticationService.getUser().subscribe((user) => {
-      this.user = user;
+      this.user = new User();
+      this.user.deserialize(user);
 
       // Définit le tableau des options de menus...
       this.options = this.user.getMainMenuOptions();
@@ -40,12 +42,5 @@ export class MenuComponent implements OnInit {
    }
 
   ngOnInit() {
-  }
-
-  /**
-   * Lance la navigation vers la route définie
-   */
-  public onClick(option: Option) {
-    this.router.navigate([option.routing]);
   }
 }

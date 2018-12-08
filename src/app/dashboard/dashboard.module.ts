@@ -1,28 +1,24 @@
-
-import { MaterialModule } from '@app/core/material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { SharedModule } from '@app/shared/shared.module';
 import { DashboardRoutingModule } from '@app/dashboard/dashboard-routing.module';
-import { DynamicComponentLoaderModule } from '@app/dynamic-component-loader/dynamic-component-loader.module';
 import { DashboardComponent } from '@app/dashboard/components/dashboard/dashboard.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { ShopListComponent } from './components/shop-list/shop-list.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    MenuComponent
+    MenuComponent,
+    ShopListComponent
   ],
   imports: [
     CommonModule,
-    MaterialModule,
-    DashboardRoutingModule,
-    DynamicComponentLoaderModule.forChild(MenuComponent)
+    SharedModule,
+    DashboardRoutingModule
   ],
-  exports: [
-    MaterialModule
-  ],
-  entryComponents: [
-    MenuComponent
-  ]
+  exports: [],
+  providers: [],
 })
 export class DashboardModule { }
