@@ -13,7 +13,8 @@ const routes: Routes = [
   },
   {
     path: 'shops',
-    component: ShopListComponent
+    component: ShopListComponent,
+    canActivate: [AuthGuardService]
   }
 ];
 

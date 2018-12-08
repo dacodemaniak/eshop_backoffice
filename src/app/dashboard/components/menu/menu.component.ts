@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from '@app/core/auth/services/authentication.service';
 import { Option } from '@app/core/auth/models/option';
-import { ShopListComponent } from '@app/dashboard/components/shop-list/shop-list.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -34,7 +33,8 @@ export class MenuComponent implements OnInit {
     private router: Router
   ) {
     this.userSubscription = this.authenticationService.getUser().subscribe((user) => {
-      this.user = user;
+      this.user = new User();
+      this.user.deserialize(user);
 
       // Définit le tableau des options de menus...
       this.options = this.user.getMainMenuOptions();

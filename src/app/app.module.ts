@@ -37,7 +37,6 @@ export function appInit(userLoader: AuthenticationService) {
     AppRoutingModule,
   ],
   providers: [
-    AuthenticationService,
     { provide: APP_INITIALIZER, useFactory: appInit, deps: [AuthenticationService], multi: true}
   ],
   bootstrap: [AppComponent]

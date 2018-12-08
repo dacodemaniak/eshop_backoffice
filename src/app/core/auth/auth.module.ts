@@ -1,3 +1,4 @@
+import { AuthenticationService } from './services/authentication.service';
 import { InterceptorService } from './services/interceptor.service';
 
 import { NgModule } from '@angular/core';
@@ -28,6 +29,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     LoginComponent
   ],
   providers: [
+    AuthenticationService,
     InterceptorService,
     {
       provide: HTTP_INTERCEPTORS,

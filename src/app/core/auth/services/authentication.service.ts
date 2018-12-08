@@ -38,6 +38,7 @@ export class AuthenticationService {
         this.http.get<any>(
           environment.apiUrl + 'token/' + token,
         ).subscribe((user) => {
+          console.log('Initialize module');
           // Créer l'instance complète de l'utilisateur
           const userObject = new User();
           userObject.deserialize(user);
@@ -46,6 +47,7 @@ export class AuthenticationService {
           resolve(userObject);
         });
       } else {
+        console.log('Initialize module / no user');
         const userObject = new User();
         this.userSubject.next(userObject);
         this.user = this.userSubject.asObservable();
