@@ -115,7 +115,6 @@ export class AuthenticationService {
         environment.apiUrl + 'token/' + token,
       ).pipe(
         map((user) => {
-          console.log(user);
           resolve(user);
          if (user && user.token) {
            this.userSubject.next(user);
