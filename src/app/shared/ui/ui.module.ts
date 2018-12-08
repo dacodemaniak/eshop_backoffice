@@ -1,8 +1,8 @@
 
-
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from '@app/shared/material/material.module';
 import { LayoutComponent } from '@app/shared/ui/layout/layout.component';
@@ -22,6 +22,7 @@ import { CarouselComponent } from '@app/shared/components/carousel/carousel.comp
   ],
   imports: [
     CommonModule,
+    RouterModule,
     MaterialModule
   ],
   exports: [

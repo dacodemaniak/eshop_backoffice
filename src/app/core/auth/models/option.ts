@@ -35,13 +35,14 @@ export class Option implements DeserializableInterface {
    */
   public nodes: Array<Option>;
 
-  public getRoute(): string {
+  private setRoute(): void {
     const route: string =  this.route.substr(1, this.route.length);
-    return route;
+    this.route = route;
   }
 
   public deserialize(data: any) {
     Object.assign(this, data);
+
        /**
     console.log(data.nodes);
 

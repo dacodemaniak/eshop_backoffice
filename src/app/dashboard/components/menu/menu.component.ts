@@ -43,13 +43,4 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  /**
-   * Lance la navigation vers la route définie
-   */
-  public onClick(option: Option) {
-    const optionObject = new Option();
-    optionObject.deserialize(option);
-    this.router.navigate([optionObject.getRoute()]);
-  }
 }

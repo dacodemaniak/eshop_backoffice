@@ -1,5 +1,5 @@
 <mat-grid-list cols="2" rowHeight="5:1">
   <mat-grid-tile *ngFor="let option of options">
-    <a mat-raised-button color="primary" routerLink="/dashboard/shops">{{ option.content.title }}</a>
+    <a mat-raised-button color="primary" routerLink="/dashboard{{option.route}}">{{ option.content.title }}</a>
   </mat-grid-tile>
 </mat-grid-list>

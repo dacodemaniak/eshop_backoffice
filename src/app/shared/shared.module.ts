@@ -4,10 +4,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MaterialModule } from '@app/shared/material/material.module';
 import { UiModule } from '@app/shared/ui/ui.module';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
-  ],
+  NotFoundComponent],
   imports: [
     CommonModule,
     FlexLayoutModule,
