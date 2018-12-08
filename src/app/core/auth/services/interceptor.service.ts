@@ -25,6 +25,7 @@ export class InterceptorService implements HttpInterceptor {
    * @param next
    */
   public intercept (request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log('Interception de requêtes HTTP');
     if (this.authenticationService.hasToken()) {
       request = request.clone({
         setHeaders: {

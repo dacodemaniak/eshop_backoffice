@@ -98,7 +98,7 @@ export class AuthenticationService {
    * Retourne le token Utilisateur enregistré
    */
   public getToken(): string {
-    return localStorage.getItem('eshopUser');
+    return JSON.parse(localStorage.getItem('eshopUser'));
   }
 
   /**

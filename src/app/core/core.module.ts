@@ -2,8 +2,6 @@ import { AuthGuardService } from './auth/services/auth-guard.service';
 import { NgModule, SkipSelf, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { SharedModule } from '@app/shared/shared.module';
 import { AuthModule } from '@app/core/auth/auth.module';

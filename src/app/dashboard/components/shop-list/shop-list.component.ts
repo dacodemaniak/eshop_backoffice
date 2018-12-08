@@ -12,11 +12,19 @@ export class ShopListComponent implements OnInit {
 
   public shopList: Array<Shop>;
 
-  constructor(private shopService: AdminService) { }
+  constructor(private shopService: AdminService) {
+
+  }
 
   ngOnInit() {
-    this.shopList = this.shopService.getShops();
-    console.log('Boutiques : ' + JSON.stringify(this.shopList));
+    this.shopService.getShops().subscribe((response) => {
+      if (response.status === 200) {
+        const shopList: Array<Shop> = response.get('body');
+      } else {
+        this.shopList = [];
+      }
+      console.log('Boutiques : ' + this.shopList.length);
+    });
   }
 
 }

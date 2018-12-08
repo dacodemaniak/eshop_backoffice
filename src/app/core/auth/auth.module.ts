@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+//import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '@app/shared/shared.module';
 import { LoginComponent } from '@app/core/auth/pages/login/login.component';
 
@@ -13,7 +13,7 @@ import { LoginComponent } from '@app/core/auth/pages/login/login.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    //HttpClientModule,
     SharedModule,
   ],
   exports: [
